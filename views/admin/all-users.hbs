@@ -1,0 +1,28 @@
+<section>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">User id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each usersData}}
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{this._id}}</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Email}}</td>
+                    <td>
+                        <a href="/admin/ban-user/{{this._id}}" class="btn btn-danger" onclick=" return confirm('Are you want to ban {{this.Name}} account')">Ban Account</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,55 @@
+<section>
+    <div class="container">
+        {{#if noItem}}
+        <div class="text-center" >
+            <h1 class="text-center mt-5">No Items In your Cart</h1>
+        <a href="/#" class="btn btn-success text-center">Add Now</a>
+        </div>
+        {{else}}
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td><img src="/product-images/{{this.product._id}}.jpg" style="width: 70px;height: 70px;"></td>
+                    <td>{{this.product.Name}}</td>
+                    <td>Rs. {{this.product.Price}} /-</td>
+                    <td>
+                        <button class="cart-item-count m-1 btn" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                        <span id="{{this.product._id}}">{{this.quantity}}</span>
+                        <button class="cart-item-count m-1 btn" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                    </td>
+                    <td>
+                        <button onclick=" return confirm('Are you want to remove {{this.Name}} from this cart  ?') , removeProduct('{{this.product._id}}','{{this._id}}')" class="btn btn-danger" >Remove</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- Total product --}}
+    <div class="total-price m-5">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Total</td>
+                    <td>Rs.<span id="sub-total" >{{total}} </span> /-</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/place-order" class="btn btn-success mt-4">Buy Now</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {{/if}}
+    </div>
+</section>

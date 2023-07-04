@@ -1,0 +1,18 @@
+<section class="d-flex align-center justify-center">
+        <div class="container mt-5 text-center">
+            <div class="row d-flex justify-content-center">
+                {{#each products}}
+                <div class="col-10 col-md-3 mt-3">
+                    <div class="card p-2" style="width: 18rem;height: 25rem; justify-content: center; align-items: center;">
+                        <img src="/product-images/{{this._id}}.jpg" class="card-img-top" alt="..." style="width: 150px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.Name}}</h5>
+                            <p class="card-text">Rs. {{this.Price}} /-</p>
+                            <p class="card-text">{{this.Description}}</p>
+                            <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add cart</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+        </div>
+    </section>
